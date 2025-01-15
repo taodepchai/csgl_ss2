@@ -1,0 +1,54 @@
+a,
+PRIMARY KEY:
+
+Định nghĩa: Ràng buộc dùng để xác định một cột (hoặc tập hợp cột) trong bảng có giá trị duy nhất và không được để trống. Mỗi bảng chỉ có một khóa chính
+
+VD:
+CREATE TABLE NhanVien (
+    MaNV INT PRIMARY KEY,
+    HoTen VARCHAR(100)
+);
+
+NOT NULL:
+
+Định nghĩa: Ràng buộc đảm bảo rằng cột không được phép chứa giá trị NULL.
+VD:
+CREATE TABLE SanPham (
+    MaSP INT PRIMARY KEY,
+    TenSP VARCHAR(100) NOT NULL,
+    GiaBan DECIMAL(10, 2)
+);
+
+FOREIGN KEY:
+
+Định nghĩa: Ràng buộc đảm bảo một cột (hoặc tập hợp cột) trong bảng này tham chiếu đến khóa chính của bảng khác, duy trì tính toàn vẹn dữ liệu.
+VD:
+CREATE TABLE LopHoc (
+    MaLop INT PRIMARY KEY,
+    TenLop VARCHAR(100)
+);
+
+CREATE TABLE SinhVien (
+    MaSV INT PRIMARY KEY,
+    HoTen VARCHAR(100),
+    MaLop INT,
+    FOREIGN KEY (MaLop) REFERENCES LopHoc(MaLop)
+);
+
+
+b,
+Đảm bảo tính toàn vẹn dữ liệu:
+
+Các ràng buộc như PRIMARY KEY và FOREIGN KEY giúp đảm bảo không có dữ liệu trùng lặp hoặc không hợp lệ.
+Duy trì tính nhất quán:
+
+Ràng buộc như FOREIGN KEY đảm bảo mối quan hệ giữa các bảng luôn chính xác.
+Hạn chế lỗi nhập liệu:
+
+NOT NULL ngăn chặn việc nhập giá trị thiếu cho các cột quan trọng.
+Cải thiện hiệu suất truy vấn:
+
+Các ràng buộc giúp tối ưu hóa việc tìm kiếm và lập chỉ mục, đặc biệt là khi sử dụng PRIMARY KEY.
+Giảm thiểu lỗi logic:
+
+Ràng buộc làm giảm khả năng xảy ra lỗi do vi phạm quy tắc kinh doanh hoặc mối quan hệ giữa dữ liệu.

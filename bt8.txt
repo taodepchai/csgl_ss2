@@ -1,0 +1,16 @@
+a) Phân tích và liệt kê các vấn đề trong bảng:
+	Thiếu ràng buộc khóa chính (Primary Key):
+
+	Cột MaSV không được chỉ định là khóa chính, dẫn đến khả năng trùng lặp giá trị.
+	Thiếu ràng buộc NOT NULL:
+
+	Cột MaSV và Diem không được ràng buộc NOT NULL, nên có thể chứa giá trị null, gây lỗi logic.
+	Thiếu kiểm tra giá trị (CHECK):
+
+	Cột Diem không được ràng buộc kiểm tra giá trị hợp lệ, có thể dẫn đến nhập dữ liệu ngoài phạm vi (ví dụ: -5, 12).
+
+b) Câu lệnh SQL hoàn thiện:
+	CREATE TABLE Diem (
+		MaSV VARCHAR(20) NOT NULL PRIMARY KEY, 
+		Diem INT NOT NULL CHECK (Diem BETWEEN 0 AND 10) 
+	);
